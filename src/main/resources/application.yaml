@@ -1,0 +1,57 @@
+spring:
+  application:
+    name: gateway
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 55MB
+  jwt:
+    secret: mySuperSecretKeyProtivHackerovDon'tHackplzMyDiplomProjectPLLLLLLZZZZZ1337228
+server:
+  address: 0.0.0.0
+  port: 8080
+  forward-headers-strategy: framework
+client:
+  user:
+    baseUrl: "http://0.0.0.0:8081"
+    resources:
+      userAuth: "/api/v1/user/login"
+      userRegister: "/api/v1/user/register"
+      validateToken: "/api/v1/user/validToken"
+  artist:
+    base-url: "http://0.0.0.0:8082"
+    resources:
+      artistCreate: "/api/v1/artist/create"
+      artistGet: "/api/v1/artist/profile/{userId}"
+      artistUpdate: "/api/v1/artist/profile/{userId}"
+      artistName: "/api/v1/artist/name/{userId}"
+  organization:
+    base-url: "http://0.0.0.0:8082"
+    resources:
+      organizationCreate: "/api/v1/organization/create"
+      organizationGet: "/api/v1/organization/profile/{userId}"
+      organizationUpdate: "/api/v1/organization/profile/{userId}"
+  event:
+    base-url: "http://0.0.0.0:8083"
+    resources:
+      eventCreate: "/api/v1/event/create"
+      eventGets: "/api/v1/event"
+      eventGet: "/api/v1/event/{eventId}"
+      getMyEvents: "/api/v1/event/myEvents"
+      updateEvent: "/api/v1/event/{eventId}"
+  application:
+    base-url: "http://0.0.0.0:8083"
+    resources:
+      applicationCreate: "/api/v1/application/create"
+      applicationUpdateStatus: "/api/v1/application/{id}/status"
+      applicationGet: "/api/v1/application/event"
+  performance:
+    base-url: "http://0.0.0.0:8083"
+    resources:
+      performanceCreate: "api/v1/performance/create"
+      performanceUpdateStatus: "api/v1/performance/{id}/status"
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
