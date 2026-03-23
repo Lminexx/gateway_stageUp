@@ -33,6 +33,11 @@ public class ArtistController {
         log.info("get Artist {} ", userId);
         return new ResponseEntity<>(artistService.getArtistById(userId), HttpStatus.OK);
     }
+    @GetMapping("/{artistId}")
+    public ResponseEntity<ArtistDTO> getArtistProfileById(@PathVariable UUID artistId) {
+        log.info("get Artist by ID {} ", artistId);
+        return new ResponseEntity<>(artistService.getArtistById(artistId), HttpStatus.OK);
+    }
 
     @PutMapping("/profile")
     public ResponseEntity<ArtistDTO> editArtistProfile(
