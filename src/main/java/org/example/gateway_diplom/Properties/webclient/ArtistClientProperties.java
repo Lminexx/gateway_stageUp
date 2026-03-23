@@ -20,5 +20,7 @@ public class ArtistClientProperties {
         private String artistGet;
         private String artistUpdate;
         private String artistName;
+        private String artistUploadAvatar;
+        private String artistGetAvatar;
     }
 }

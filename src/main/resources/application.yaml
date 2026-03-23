@@ -25,6 +25,8 @@ client:
       artistGet: "/api/v1/artist/profile/{userId}"
       artistUpdate: "/api/v1/artist/profile/{userId}"
       artistName: "/api/v1/artist/name/{userId}"
+      artistUploadAvatar: "/api/v1/artist/avatar/{userId}"
+      artistGetAvatar: "/api/v1/artist/avatar/{userId}"
   organization:
     base-url: "http://0.0.0.0:8082"
     resources:
@@ -50,6 +52,10 @@ client:
     resources:
       performanceCreate: "api/v1/performance/create"
       performanceUpdateStatus: "api/v1/performance/{id}/status"
+  minio:
+    base-url: "http://localhost:9000"
+    resources:
+      artist: "/artist"
 springdoc:
   api-docs:
     path: /v3/api-docs
