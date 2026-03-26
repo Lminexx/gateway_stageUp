@@ -93,4 +93,22 @@ public class EventClient {
                 eventId
         ).getBody();
     }
+
+    public void deleteEvent(UUID eventId, UUID userId) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        if (userId != null) {
+            headers.set("X-User-Id", userId.toString());
+        }
+
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+        restTemplate.exchange(
+                eventClientProperties.getBaseUrl() + eventClientProperties.getResources().getDeleteEvent(),
+                HttpMethod.DELETE,
+                entity,
+                Void.class,
+                eventId
+        ).getBody();
+    }
 }

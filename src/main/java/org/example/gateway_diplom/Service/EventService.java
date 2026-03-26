@@ -36,4 +36,8 @@ public class EventService {
     public EventDTO updateEvent(UUID eventId,UUID organizerUserId, EventRequest eventRequest) {
         return eventClient.updateEvent(eventId, organizerUserId, eventRequest);
     }
+
+    public void deleteEvent(UUID eventId, UUID userId) {
+        eventClient.deleteEvent(eventId, userId);
+    }
 }

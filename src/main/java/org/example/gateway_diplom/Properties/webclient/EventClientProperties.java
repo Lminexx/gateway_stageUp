@@ -21,5 +21,6 @@ public class EventClientProperties {
         private String eventGet;
         private String getMyEvents;
         private String updateEvent;
+        private String deleteEvent;
     }
 }

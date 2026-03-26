@@ -55,10 +55,11 @@ public class ArtistController {
         log.info("upload avatar {} ", file);
         return new ResponseEntity<>(artistService.uploadAvatar(file,userId), HttpStatus.OK);
     }
-    @GetMapping("/avatar")
-    public ResponseEntity<AvatarDTO> getAvatar(@RequestHeader("X-User-Id") UUID userId){
-        log.info("get avatar {} ", userId);
-        return new ResponseEntity<>(artistService.getAvatar(userId), HttpStatus.OK);
+
+    @GetMapping("/avatar/{userId}")
+    public ResponseEntity<AvatarDTO> getAvatar(@PathVariable UUID userId){
+        log.info("get avatar for user: {} ", userId);
+        return ResponseEntity.ok(artistService.getAvatar(userId));
     }
 
 

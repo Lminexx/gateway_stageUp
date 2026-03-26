@@ -17,5 +17,6 @@ public class MinioClientProperties {
     @Getter @Setter
     public static class MinioResources {
         private String artist;
+        private String organizer;
     }
 }

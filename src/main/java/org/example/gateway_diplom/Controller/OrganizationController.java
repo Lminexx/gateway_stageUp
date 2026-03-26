@@ -1,10 +1,13 @@
 package org.example.gateway_diplom.Controller;
 import lombok.extern.slf4j.Slf4j;
+import org.example.gateway_diplom.DTO.AvatarDTO;
 import org.example.gateway_diplom.DTO.profilesDTO.OrganizationDTO;
 import org.example.gateway_diplom.DTO.profilesDTO.OrganizationRequest;
 import org.example.gateway_diplom.Service.OrganizationService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.UUID;
 
@@ -39,6 +42,19 @@ public class OrganizationController {
             @RequestBody OrganizationRequest organizationRequest){
         log.info("Update Organization {}", organizationRequest);
         return ResponseEntity.ok(organizationService.updateOrganization(userId, organizationRequest));
+    }
+
+    @PostMapping("/uploadAvatar")
+    public ResponseEntity<AvatarDTO> uploadAvatar(@RequestParam("file") MultipartFile file,
+                                                  @RequestHeader("X-User-Id") UUID userId) {
+        log.info("upload avatar {} ", file);
+        return new ResponseEntity<>(organizationService.uploadAvatar(file,userId), HttpStatus.OK);
+    }
+
+    @GetMapping("/avatar/{userId}")
+    public ResponseEntity<AvatarDTO> getAvatar(@PathVariable UUID userId){
+        log.info("get avatar for organization: {} ", userId);
+        return ResponseEntity.ok(organizationService.getAvatar(userId));
     }
 
 }

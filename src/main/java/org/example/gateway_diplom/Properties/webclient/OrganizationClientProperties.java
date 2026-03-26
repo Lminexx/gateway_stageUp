@@ -19,5 +19,7 @@ public class OrganizationClientProperties {
         private String organizationCreate;
         private String organizationGet;
         private String organizationUpdate;
+        private String organizationUploadAvatar;
+        private String organizationGetAvatar;
     }
 }
